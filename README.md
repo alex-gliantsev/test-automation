@@ -1,1 +1,1 @@
-# test-automation
+# Just a demo test project.

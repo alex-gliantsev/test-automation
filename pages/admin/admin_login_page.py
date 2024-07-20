@@ -4,7 +4,7 @@ class AdminLoginPage:
    def __init__(self, page):
         self.page = page
 
-   # Авторизация пользователя (администратор, оператор)
+   # User authentication (admin, operator)
    def login(self, username, password):
       self.page.set_viewport_size(VIEWPORT_SIZE)
       self.page.goto(BASE_URL_ADMIN)

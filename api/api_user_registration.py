@@ -24,11 +24,11 @@ def register_user(phone_number):
             token = token_response["token"]
             return token
         else:
-            raise ValueError("Токен не найден")
+            raise ValueError("Token not found")
     except requests.exceptions.RequestException as e:
-        raise ValueError(f"Ошибка с регистрацией: {e}")
+        raise ValueError(f"Failed to register user: {e}")
 
 def format_phone_number(phone: str):
     if len(phone) != 10:
-        raise ValueError("Неверный формат номера")
+        raise ValueError("Phone number must be 10 digits long")
     return f"+7 ({phone[0:3]}) {phone[3:6]} {phone[6:8]}-{phone[8:]}"
