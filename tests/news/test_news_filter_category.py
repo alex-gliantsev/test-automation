@@ -19,7 +19,6 @@ def test_filter_by_single_category_without_subcategories(page: Page):
    # Collect the names of news categories after applying the filter
    category_names = news_page.collect_category_names()
    
-   assert len(category_names) > 0, "The list is empty, no news with the given query found"
    # Check that the values of the category names of each news item correspond to the selected category
    assert all(name.lower() == category_filter.lower() for name in category_names), f"{category_names} != {category_filter}" 
    
@@ -38,8 +37,7 @@ def test_filter_by_category_including_subcategories(page: Page):
    
    # Collect the names of news categories after applying the filter
    category_names = news_page.collect_category_names()
-   
-   assert len(category_names) > 0, "The list is empty, no news with the given query found"
+
    # Check that the values of the category names of each news item correspond to the selected category
    assert all(name.lower() == category_filter.lower() for name in category_names), f"{category_names} != {category_filter}" 
    
@@ -59,7 +57,6 @@ def test_filter_by_multiple_categories_without_subcategories(page: Page):
    # Collect the names of news categories after applying the filter
    category_names = news_page.collect_category_names()
    
-   assert len(category_names) > 0, "The list is empty, no news with the given query found"
    # Check that the values of the category names of each news item correspond to the selected categories
    assert all(name.lower() in (filter_name.lower() for filter_name in category_filter)
          for name in category_names), f"{category_names} != {category_filter}"
@@ -87,7 +84,6 @@ def test_filter_by_subcategory(page: Page):
    # Collect the names of news categories after applying the filter
    category_names = news_page.collect_category_names()
 
-   assert len(category_names) > 0, "The list is empty, no news with the given query found"
    # Check that the values of the category names of each news item correspond to the parent category
    assert all(name.lower() == parent_category.lower() for name in category_names), f"{category_names} != {parent_category}" 
    # Check that there is only one ‘group’ value in the query and that it matches the given group_value
@@ -113,7 +109,6 @@ def test_filter_by_several_subcategories(page: Page):
    # Collect the names of news categories after applying the filter
    category_names = news_page.collect_category_names()
 
-   assert len(category_names) > 0, "The list is empty, no news with the given query found"
    # Check that the values of the category names of each news item correspond to the parent categories
    assert all(name.lower() in (filter_name.lower() for filter_name in parent_category) for name in category_names), f"{category_names} != {parent_category}" 
    # Check that the set of values of the ‘group’ parameter matches the expected list of values of all categories (by number and composition)

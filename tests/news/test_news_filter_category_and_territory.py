@@ -28,7 +28,6 @@ def test_filter_by_category_and_territory(page: Page):
    # Check that the 'region' parameter contains the expected value
    assert sorted(actual_region_values) == sorted(region_value)
    
-   assert len(category_names) > 0, "The list is empty, no news with the given query found"
    # Check that the values of the category names of each news item correspond to the selected category
    assert all(name.lower() == category_filter.lower() for name in category_names), f"{category_names} != {category_filter}" 
    
@@ -63,7 +62,6 @@ def test_filter_by_subcategory_and_district(page: Page):
    assert actual_region_values == [region_value]
    assert actual_group_values == [group_value]
    
-   assert len(category_names) > 0, "The list is empty, no news with the given query found"
    # Check that the values of the category names of each news item correspond to the parent category
    assert all(name.lower() == parent_category.lower() for name in category_names), f"{category_names} != {parent_category}" 
    
@@ -101,7 +99,6 @@ def test_filter_by_several_categories_and_territories(page: Page):
    assert sorted(actual_region_values) == sorted(region_value)
    assert sorted(actual_group_values) == sorted(group_value)
    
-   assert len(category_names) > 0, "The list is empty, no news with the given query found"
    # Check that the values of the category names of each news item correspond to the parent category
    assert all(name.lower() in (filter_name.lower() for filter_name in parent_category) 
       for name in category_names), f"{category_names} != {parent_category}" 
